@@ -1,0 +1,33 @@
+{
+  "name": "Admin Tool",
+  "icons": [
+    {
+      "src": "b.jpg",
+      "sizes": "48x48",
+      "type": "image/jpg",
+      "density": 1.0
+    },
+    {
+      "src": "b.jpg",
+      "sizes": "96x96",
+      "type": "image/jpg",
+      "density": 2.0
+    },
+    {
+      "src": "b.jpg",
+      "sizes": "144x144",
+      "type": "image/jpg",
+      "density": 3.0
+    },
+    {
+      "src": "b.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg",
+"density": 4.0
+    }
+  ],
+  "start_url": "index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFFFF"
+}
