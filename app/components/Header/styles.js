@@ -1,0 +1,57 @@
+const styles = {
+    header: {
+        maxHeight: 100,
+        zIndex: 1030,
+        display: 'block',
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+    },
+    logo: {
+        float: 'left',
+        fontSize: 20,
+        textAlign: 'center',
+        padding: '0 10',
+        width: 220,
+        fontFamily: "'Kaushan Script', cursive",
+        fontWeight: 500,
+        height: 50,
+        display: "block",
+        backgroundColor: '#283744',
+        color: '#f9f9f9',
+        paddingTop: 7,
+    },
+    nav: {
+        backgroundColor: '#ffffff',
+        borderBottom: '1px solid #eee',
+        height: 50,
+        marginBottom: 0,
+        marginLeft: 220,
+        position: 'relative',
+        minHeight: 50,
+        marginBottom: 20,
+    },
+    btnTogle: {
+        float: 'left',
+        padding: '9px 5px',
+        marginTop: 8,
+        marginRight: 0,
+        marginBottom: 8,
+        marginLeft: 5,
+        backgroundColor: 'transparent',
+        backgroundImage: "none",
+        border: '1px solid transparent',
+        borderRadius: '0 !important',
+        cursor: 'pointer',
+    },
+    toggle:{
+        fontSize: 30,
+        marginLeft: 10,
+        marginTop: 10,
+        fontWeight: 600,
+        cursor: 'pointer',
+    }
+}
+
+export default styles;
