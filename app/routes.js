@@ -80,9 +80,9 @@ export default function createRoutes(store) {
       name: 'news',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/NewsManager_V2/NewsEvent/CateNewsEvent/reducer'),
-          import('containers/NewsManager_V2/NewsEvent/CateNewsEvent/sagas'),
-          import('containers/NewsManager_V2/NewsEvent/CateNewsEvent/'),
+          import('containers/NewsManager_v2/NewsEvent/CateNewsEvent/reducer'),
+          import('containers/NewsManager_v2/NewsEvent/CateNewsEvent/sagas'),
+          import('containers/NewsManager_v2/NewsEvent/CateNewsEvent/'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -124,9 +124,9 @@ export default function createRoutes(store) {
       name: 'listNewsEvent',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/NewsManager_V2/NewsEvent/ListNewsEvent/reducer'),
-          import('containers/NewsManager_V2/NewsEvent/ListNewsEvent/sagas'),
-          import('containers/NewsManager_V2/NewsEvent/ListNewsEvent'),
+          import('containers/NewsManager_v2/NewsEvent/ListNewsEvent/reducer'),
+          import('containers/NewsManager_v2/NewsEvent/ListNewsEvent/sagas'),
+          import('containers/NewsManager_v2/NewsEvent/ListNewsEvent'),
         ]);
 
         const renderRoute = loadModule(cb);
