@@ -95,30 +95,7 @@ export default function createRoutes(store) {
         });
 
         importModules.catch(errorLoading);
-      },
-      // childRoutes: [
-      //   {
-      //     path: '/news/:id_cate_news',
-      //     name: 'listnews',
-      //     getComponent(nextState, cb) {
-      //       const importModules = Promise.all([
-      //         import('containers/ListNews/reducer'),
-      //         import('containers/ListNews/sagas'),
-      //         import('containers/ListNews'),
-      //       ]);
-
-      //       const renderRoute = loadModule(cb);
-
-      //       importModules.then(([reducer, sagas, component]) => {
-      //         injectReducer('listnews', reducer.default);
-      //         injectSagas(sagas.default);
-      //         renderRoute(component);
-      //       });
-
-      //       importModules.catch(errorLoading);
-      //     },
-      //   }
-      // ]
+      }
     },{
       path: '/news/:id_cate_news',
       name: 'listNewsEvent',
