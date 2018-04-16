@@ -14,7 +14,7 @@ import messages from './messages';
 import { Row, Col, Button, Icon,Pagination } from 'antd';
 import ClistNewsEvent from 'components/CNewsManage_V2/CNewsEvent/ClistNewsEvent'
 import CnewsEventDetail from 'components/CNewsManage_V2/CNewsEvent/CnewsEventDetail';
-import ModalAddNews from 'components/ModalAddNews'
+import ModalAddNews from 'components/CNewsManage_V2/CNewsEvent/ModalAddNews'
 import styles from './styles';
 import { Breadcrumb,Popconfirm } from 'antd';
 
@@ -102,11 +102,12 @@ export class ListNewsEvent extends React.Component {
           modalAddNews={this.state.modalAddNews} handleCloseModalAdd={this.handleCloseModalAdd}
           errorCode={this.props.errorCode}/>
       )
-      let nameCate = this.props.listCate.map((item, index) => {
+      let nameCate = this.props.listCate.filter((item, index) => {
         if(item.id===this.props.params.id_cate_news){
           return item;
         }     
       })
+      console.log("nameCate: "+nameCate)
       breadCrumb = (
         <Breadcrumb>
           <Breadcrumb.Item><a style={{fontSize: 16}} href="/news">Tin tức - Sự kiện</a></Breadcrumb.Item>

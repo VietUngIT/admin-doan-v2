@@ -141,9 +141,9 @@ export default function createRoutes(store) {
       name: 'marketinfo',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/MarketInfo/ManagerMarketInfo/reducer'),
-          import('containers/MarketInfo/ManagerMarketInfo/sagas'),
-          import('containers/MarketInfo/ManagerMarketInfo'),
+          import('containers/NewsManager_v2/MarketInfo/CateMarketInfo/reducer'),
+          import('containers/NewsManager_v2/MarketInfo/CateMarketInfo/sagas'),
+          import('containers/NewsManager_v2/MarketInfo/CateMarketInfo/'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -156,29 +156,29 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
-      childRoutes: [
-        {
-          path: '/marketinfo/:id_cate_news',
-          name: 'listMarketInfo',
-          getComponent(nextState, cb) {
-            const importModules = Promise.all([
-              import('containers/MarketInfo/ListMarketInfo/reducer'),
-              import('containers/MarketInfo/ListMarketInfo/sagas'),
-              import('containers/MarketInfo/ListMarketInfo'),
-            ]);
+      // childRoutes: [
+      //   {
+      //     path: '/marketinfo/:id_cate_news',
+      //     name: 'listMarketInfo',
+      //     getComponent(nextState, cb) {
+      //       const importModules = Promise.all([
+      //         import('containers/MarketInfo/ListMarketInfo/reducer'),
+      //         import('containers/MarketInfo/ListMarketInfo/sagas'),
+      //         import('containers/MarketInfo/ListMarketInfo'),
+      //       ]);
 
-            const renderRoute = loadModule(cb);
+      //       const renderRoute = loadModule(cb);
 
-            importModules.then(([reducer, sagas, component]) => {
-              injectReducer('listMarketInfo', reducer.default);
-              injectSagas(sagas.default);
-              renderRoute(component);
-            });
+      //       importModules.then(([reducer, sagas, component]) => {
+      //         injectReducer('listMarketInfo', reducer.default);
+      //         injectSagas(sagas.default);
+      //         renderRoute(component);
+      //       });
 
-            importModules.catch(errorLoading);
-          },
-        }
-      ]
+      //       importModules.catch(errorLoading);
+      //     },
+      //   }
+      // ]
     },{
       path: '/marketinfo/:id_cate_news/:id_news',
       name: 'marketInfoDetail',

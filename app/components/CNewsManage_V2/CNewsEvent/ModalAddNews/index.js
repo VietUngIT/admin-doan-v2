@@ -11,7 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import styles from './styles';
 import {Button,Modal,message} from 'antd'
 import CKEditor from "react-ckeditor-component";
-import Tags from '../Utils/Tags';
+import Tags from 'components/Utils/Tags';
 const Button_ = styled.button`
   height: 35px;
   width: 240px;

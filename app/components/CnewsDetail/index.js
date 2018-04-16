@@ -13,7 +13,7 @@ import styles from './styles';
 import CKEditor from "react-ckeditor-component";
 import Tags from '../Utils/Tags'
 import {Button,Modal} from 'antd'
-import ModalAddNews from 'components/ModalAddNews'
+import ModalAddNews from 'components/CNewsManage_V2/CNewsEvent/ModalAddNews';
 const Button_ = styled.button`
   height: 35px;
   width: 240px;
