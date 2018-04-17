@@ -1,12 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
 import styles from './styles';
-import {Button,Modal} from 'antd'
+import {Button,Modal,message} from 'antd'
 import CKEditor from "react-ckeditor-component";
-import Tags from '../../Utils/Tags';
+import Tags from 'components/Utils/Tags';
 const Button_ = styled.button`
   height: 35px;
   width: 240px;
@@ -94,6 +91,7 @@ class ModalAddNewsMK extends React.Component {
     var store = document.getElementById('imgAddNewsMK');
     store.src = require('containers/App/maxresdefault.jpg');
     this.setState({stateContent: "",});
+    CKEDITOR.instances.editor1.setData("");
   }
   componentWillReceiveProps(nextProps){
     if(this.props.errorCode!==nextProps.errorCode && !this.props.errorCode){

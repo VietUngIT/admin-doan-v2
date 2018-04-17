@@ -8,9 +8,14 @@ import NavigationBar from 'components/NavigationBar'
 import Header from 'components/Header'
 import ResizeAware from 'react-resize-aware';
 import { Link, } from 'react-router';
+import { message } from 'antd';
 const AppWrapper = styled.div`
   min-height: 100%;
 `;
+
+message.config({
+  top: 60,
+});
 
 export  class App extends React.Component {
   constructor(props) {

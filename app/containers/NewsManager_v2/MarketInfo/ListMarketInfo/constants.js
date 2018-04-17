@@ -1,0 +1,10 @@
+export const DEFAULT_ACTION = 'app/ListMarketInfo/DEFAULT_ACTION';
+export const GET_LIST_MK_ACTION = 'app/ListMarketInfo/GET_LIST_MK_ACTION';
+export const GET_LIST_MK_ACTION_SUCCESS = 'app/ListMarketInfo/GET_LIST_MK_ACTION_SUCCESS';
+export const GET_LIST_CATE_MK_ACTION = 'app/ListMarketInfo/GET_LIST_CATE_MK_ACTION';
+export const GET_LIST_CATE_MK_ACTION_SUCCESS = 'app/ListMarketInfo/GET_LIST_CATE_MK_ACTION_SUCCESS';
+export const DELETE_NEWS_MK_ACTION = 'app/ListMarketInfo/DELETE_NEWS_MK_ACTION';
+export const DELETE_NEWS_MK_ACTION_SUCCESS = 'app/ListMarketInfo/DELETE_NEWS_MK_ACTION_SUCCESS';
+export const ADD_NEWS_MK_ACTION = 'app/ListMarketInfo/ADD_NEWS_MK_ACTION';
+export const ADD_NEWS_MK_ACTION_SUCCESS = 'app/ListMarketInfo/ADD_NEWS_MK_ACTION_SUCCESS';
+export const ADD_NEWS_MK_NOT_DATA_ACTION_SUCCESS = "app/ListMarketInfo/ADD_NEWS_MK_NOT_DATA_ACTION_SUCCESS"

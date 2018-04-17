@@ -156,29 +156,26 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
-      // childRoutes: [
-      //   {
-      //     path: '/marketinfo/:id_cate_news',
-      //     name: 'listMarketInfo',
-      //     getComponent(nextState, cb) {
-      //       const importModules = Promise.all([
-      //         import('containers/MarketInfo/ListMarketInfo/reducer'),
-      //         import('containers/MarketInfo/ListMarketInfo/sagas'),
-      //         import('containers/MarketInfo/ListMarketInfo'),
-      //       ]);
+    },{
+      path: '/marketinfo/:id_cate_news',
+      name: 'listMarketInfo',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/NewsManager_v2/MarketInfo/ListMarketInfo/reducer'),
+          import('containers/NewsManager_v2/MarketInfo/ListMarketInfo/sagas'),
+          import('containers/NewsManager_v2/MarketInfo/ListMarketInfo'),
+        ]);
 
-      //       const renderRoute = loadModule(cb);
+        const renderRoute = loadModule(cb);
 
-      //       importModules.then(([reducer, sagas, component]) => {
-      //         injectReducer('listMarketInfo', reducer.default);
-      //         injectSagas(sagas.default);
-      //         renderRoute(component);
-      //       });
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('listMarketInfo', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
 
-      //       importModules.catch(errorLoading);
-      //     },
-      //   }
-      // ]
+        importModules.catch(errorLoading);
+      },
     },{
       path: '/marketinfo/:id_cate_news/:id_news',
       name: 'marketInfoDetail',
