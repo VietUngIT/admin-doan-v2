@@ -11,6 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import ItemCateMarketInfo from '../../CMarketInfo/ItemCateMarketInfo'
 import { Button, Icon } from 'antd'
+import {message,} from 'antd';
 
 class CcategoryMarketInfo extends React.Component {
   addCategory=()=>{

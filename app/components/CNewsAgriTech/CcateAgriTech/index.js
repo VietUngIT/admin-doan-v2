@@ -5,12 +5,12 @@
 */
 
 import React from 'react';
-// import styled from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import ItemCateAgriTech from '../../CNewsAgriTech/ItemCateAgriTech'
 import { Button, Icon } from 'antd'
+import {message,} from 'antd';
 
 class CcateAgriTech extends React.Component {
   addCategory=()=>{

@@ -177,39 +177,19 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     },{
-      path: '/marketinfo/:id_cate_news/:id_news',
-      name: 'marketInfoDetail',
-      getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/MarketInfo/MarketInfoDetail/reducer'),
-          import('containers/MarketInfo/MarketInfoDetail/sagas'),
-          import('containers/MarketInfo/MarketInfoDetail'),
-        ]);
-
-        const renderRoute = loadModule(cb);
-
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('marketInfoDetail', reducer.default);
-          injectSagas(sagas.default);
-          renderRoute(component);
-        });
-
-        importModules.catch(errorLoading);
-      },
-    },{
       path: '/agritech',
-      name: 'managerAgriTech',
+      name: 'cateAgriTech',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/NewsAgriTech/ManagerAgriTech/reducer'),
-          import('containers/NewsAgriTech/ManagerAgriTech/sagas'),
-          import('containers/NewsAgriTech/ManagerAgriTech'),
+          import('containers/NewsManager_v2/AgriTech/CateAgriTech/reducer'),
+          import('containers/NewsManager_v2/AgriTech/CateAgriTech/sagas'),
+          import('containers/NewsManager_v2/AgriTech/CateAgriTech'),
         ]);
 
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, sagas, component]) => {
-          injectReducer('managerAgriTech', reducer.default);
+          injectReducer('cateAgriTech', reducer.default);
           injectSagas(sagas.default);
           renderRoute(component);
         });
@@ -222,9 +202,9 @@ export default function createRoutes(store) {
           name: 'subCateAgriTech',
           getComponent(nextState, cb) {
             const importModules = Promise.all([
-              import('containers/NewsAgriTech/SubCateAgriTech/reducer'),
-              import('containers/NewsAgriTech/SubCateAgriTech/sagas'),
-              import('containers/NewsAgriTech/SubCateAgriTech'),
+              import('containers/NewsManager_v2/AgriTech/SubCateAgriTech/reducer'),
+              import('containers/NewsManager_v2/AgriTech/SubCateAgriTech/sagas'),
+              import('containers/NewsManager_v2/AgriTech/SubCateAgriTech'),
             ]);
 
             const renderRoute = loadModule(cb);
@@ -237,45 +217,22 @@ export default function createRoutes(store) {
 
             importModules.catch(errorLoading);
           },
-          childRoutes: [
-            {
-              path: '/agritech/:id_cate_news/:id_sub_cate',
-              name: 'listNewsAgriTech',
-              getComponent(nextState, cb) {
-                const importModules = Promise.all([
-                  import('containers/NewsAgriTech/ListNewsAgriTech/reducer'),
-                  import('containers/NewsAgriTech/ListNewsAgriTech/sagas'),
-                  import('containers/NewsAgriTech/ListNewsAgriTech'),
-                ]);
-    
-                const renderRoute = loadModule(cb);
-    
-                importModules.then(([reducer, sagas, component]) => {
-                  injectReducer('listNewsAgriTech', reducer.default);
-                  injectSagas(sagas.default);
-                  renderRoute(component);
-                });
-    
-                importModules.catch(errorLoading);
-              },
-            }
-          ]
         }, 
       ]
     },{
-      path: '/agritech/:id_cate_news/:id_sub_cate/:id_news',
-      name: 'agriTechDetail',
+      path: '/agritech/:id_cate_news/:id_sub_cate',
+      name: 'listAgritech',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/NewsAgriTech/AgriTechDetail/reducer'),
-          import('containers/NewsAgriTech/AgriTechDetail/sagas'),
-          import('containers/NewsAgriTech/AgriTechDetail'),
+          import('containers/NewsManager_v2/AgriTech/ListAgritech/reducer'),
+          import('containers/NewsManager_v2/AgriTech/ListAgritech/sagas'),
+          import('containers/NewsManager_v2/AgriTech/ListAgritech'),
         ]);
 
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, sagas, component]) => {
-          injectReducer('agriTechDetail', reducer.default);
+          injectReducer('listAgritech', reducer.default);
           injectSagas(sagas.default);
           renderRoute(component);
         });

@@ -6,7 +6,8 @@ import messages from './messages';
 import styles from './styles';
 import {Button,Modal} from 'antd'
 import CKEditor from "react-ckeditor-component";
-import Tags from '../../Utils/Tags';
+import Tags from 'components/Utils/Tags';
+import {message,} from 'antd';
 const Button_ = styled.button`
   height: 35px;
   width: 240px;
@@ -45,7 +46,7 @@ class ModalAddAgriTech extends React.Component {
     })
   }
   imageHandler=(e2)=>{
-    var store = document.getElementById('imgAddNewsMK');
+    var store = document.getElementById('imgAddNewsAgriTech');
     store.src = e2.target.result;
     var dataInBase64 = e2.target.result.toString();
   }
@@ -70,8 +71,8 @@ class ModalAddAgriTech extends React.Component {
       if(this.refs.authorAdd.value!=null && this.refs.authorAdd.value.trim()!==""){
         author = this.refs.authorAdd.value.trim();
       }
-      if(this.refs.imageForNewsMK.src && this.refs.imageForNewsMK.src.toString().indexOf("data\:image")>-1 && this.refs.imageForNewsMK.src.toString().indexOf(";base64")>-1){
-        this.props.addNewsAgriTech(this.props.idsubcate?this.props.idsubcate:this.props.params.id_sub_cate,this.refs.titleAdd.value.trim(),
+      if(this.refs.imageForNewsAgriTech.src && this.refs.imageForNewsAgriTech.src.toString().indexOf("data\:image")>-1 && this.refs.imageForNewsAgriTech.src.toString().indexOf(";base64")>-1){
+        this.props.addNewsAgriTech(this.props.idSubcate?this.props.idSubcate:this.props.params.id_sub_cate,this.refs.titleAdd.value.trim(),
           author,this.refs.imageForNewsAgriTech.src.toString(),
           this.state.listTags,this.refs.selectCateIdAdd.value,this.state.stateContent)
 
@@ -86,9 +87,10 @@ class ModalAddAgriTech extends React.Component {
     this.refs.authorAdd.value = "";
     this.setState({listTags: [],});
     this.refs.imageNewsAdd.value="";
-    var store = document.getElementById('imgAddNewsMK');
+    var store = document.getElementById('imgAddNewsAgriTech');
     store.src = require('containers/App/maxresdefault.jpg');
     this.setState({stateContent: "",});
+    CKEDITOR.instances.editor1.setData("");
   }
   componentWillReceiveProps(nextProps){
     if(this.props.errorCode!==nextProps.errorCode && !this.props.errorCode){
@@ -97,12 +99,13 @@ class ModalAddAgriTech extends React.Component {
     }
   }
   render() {
+    console.log("this.props.listSubCate: "+this.props.listSubCate)
     let content = null;
     let dropDownCate = null;
     let tagsShow = null;
     if(this.props.listSubCate && (this.props.listSubCate.size>0 || this.props.listSubCate.length>0)){
       dropDownCate = this.props.listSubCate.map((item, index) => {
-        return (<option value={item.id}  key={index}>{item.name}</option>)    
+        return (<option value={item.id}  key={index}>{item.nameSubCate}</option>)    
       })
     }
     if(this.state.listTags && (this.state.listTags.size>0 || this.state.listTags.length>0)){

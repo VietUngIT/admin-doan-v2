@@ -78,8 +78,6 @@ class ModalAddNews extends React.Component {
     fr.readAsDataURL(filename);
   }
   onChangeContent=(e)=>{
-    // CKEDITOR.editor1
-    // console.log(CKEDITOR.instances.editor1)
     
     var content = e.editor.getData();
     this.setState({

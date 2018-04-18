@@ -9,6 +9,7 @@ import React from 'react';
 import { Row, Col, Button, Icon } from 'antd';
 import styles from './styles'
 import ItemCateNewsEvent from '../ItemCateNewsEvent'
+import {message,} from 'antd';
 
 
 class CcateNewsEvent extends React.Component {

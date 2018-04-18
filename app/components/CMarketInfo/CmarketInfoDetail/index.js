@@ -8,6 +8,7 @@ import CKEditor from "react-ckeditor-component";
 import Tags from '../../Utils/Tags'
 import {Button,Modal} from 'antd'
 import ModalAddNewsMK from 'components/CNewsManage_V2/CMarketInfo/ModalAddNewsMK';
+import {message,} from 'antd';
 const Button_ = styled.button`
   height: 35px;
   width: 240px;

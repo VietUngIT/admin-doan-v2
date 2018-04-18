@@ -140,14 +140,12 @@ export class ListMarketInfo extends React.Component {
     if(this.state.news){
       contentNews = (
         <div style={styles.inlineWrapContent}>
-          {modalAdd}
+          
           <div style={{display: 'flex', flexDirection: 'collumn',borderBottom: '1px solid #616161',}}>
             <div style={styles.header}>
               Nội dung
             </div>
-            <div style={{flex: 2,minWidth:96,textAlign: 'center',paddingTop: 8}}>
-              <Button onClick={this.addNewsHandle} type="primary" icon="plus-square-o" >Thêm mới</Button>
-            </div>
+            
             <div style={{flex: 2,minWidth:96,textAlign: 'center',paddingTop: 8}}>
               <Popconfirm title="Bạn chắc chắn muốn xóa tin tức này?" onConfirm={this.confirm} onCancel={this.cancel} okText="Đồng ý" cancelText="Hủy">
                 <Button type="danger" icon="close-square-o">Xóa</Button>
@@ -168,6 +166,7 @@ export class ListMarketInfo extends React.Component {
             { name: 'description', content: 'Description of ListMarketInfo' },
           ]}
         />
+        {modalAdd}
         <Row>
           <Col span={24}>
             <div style={styles.wrapBreadCrum}>
@@ -179,7 +178,12 @@ export class ListMarketInfo extends React.Component {
           <Col span={10} style={{fontWeight: 600}}>
             <div style={styles.wrapcontentlistnews}>
               <div style={styles.inlineWrapContentlistnews}>
-                <div style={styles.header}>Danh sách tin tức</div>
+                <div style={{display: 'flex', flexDirection: 'collumn',borderBottom: '1px solid #616161',}}>
+                  <div style={styles.header}>Danh sách tin tức</div>
+                  <div style={{flex: 2,minWidth:96,textAlign: 'center',paddingTop: 8}}>
+                    <Button onClick={this.addNewsHandle} type="primary" icon="plus-square-o" >Thêm mới</Button>
+                  </div>
+                </div>
                 <ClistMarketInfo idCate={this.props.params.id_cate_news} listNews={this.props.listNews}
                   viewNewsDetail={(id)=>this.viewNewsDetail(id)}/>
                 {page}

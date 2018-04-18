@@ -1,6 +1,6 @@
 /*
  *
- * ListNewsEvent
+ * ListAgritech
  *
  */
 
@@ -9,31 +9,31 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import makeSelectListNewsEvent from './selectors';
 import messages from './messages';
 import { Row, Col, Button, Icon,Pagination } from 'antd';
-import ClistNewsEvent from 'components/CNewsManage_V2/CNewsEvent/ClistNewsEvent'
-import CnewsEventDetail from 'components/CNewsManage_V2/CNewsEvent/CnewsEventDetail';
-import ModalAddNews from 'components/CNewsManage_V2/CNewsEvent/ModalAddNews'
+import ClistAgritech from 'components/CNewsManage_V2/CAgriTech/ClistAgritech'
+import CagriTechDetail from 'components/CNewsManage_V2/CAgriTech/CagriTechDetail';
+import ModalAddAgriTech from 'components/CNewsManage_V2/CAgriTech/ModalAddAgriTech';
 import styles from './styles';
 import { Breadcrumb,Popconfirm } from 'antd';
-
 import {
-  getListNews,
+  getListNewsAgriTech,
+  getListCateAgriTech,
+  getListSubCateAgriTech,
   deleteNews,
-  addNews,
-  getListCateNews,
+  addNewsAgriTech,
 } from './actions';
 import {
-  selectListNewsEvent,
-  selectPageNewsEvent,
-  selectTotalItemNewsEvent,
-  selectStateDelNewsEvent,
-  selectErrorCode,
-  selectListCateNewsEvent,
+  selectgetListSubCateNewsAgriTech,
+  selectListCateAgriTech,
+  selectListNewsAgriTech,
+  selectPageNewsAgriTech,
+  selectTotalItemNewsAgritech,
+  selectStateDelAT,
+  selectErrorCodeAdAgriTech,
 } from './selectors';
 
-export class ListNewsEvent extends React.Component {
+export class ListAgritech extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,24 +52,31 @@ export class ListNewsEvent extends React.Component {
     });
   }
   addNewsHandle=()=>{
-    console.log("addNewsHandle")
     this.handleShowModalAdd();
   }
   componentWillMount(){
-    this.props.getListNews(this.props.params.id_cate_news,0);
-    this.props.getListCateNews();
+    this.props.getListCateAgriTech();
+    this.props.getListSubCateAgriTech(this.props.params.id_cate_news);
+    this.props.getListNewsAgriTech(this.props.params.id_sub_cate,0);
   }
   onChange=(page)=>{
-    this.props.getListNews(this.props.params.id_cate_news,page-1);
+    this.props.getListNewsAgriTech(this.props.params.id_sub_cate,page-1);
   }
   componentWillReceiveProps(nextProps){
-    if(this.props.params.id_cate_news!==nextProps.params.id_cate_news){
-      this.props.getListNews(this.props.params.id_cate_news,0);
+    if(this.props.params.id_sub_cate!==nextProps.params.id_sub_cate){
+      this.props.getListNewsAgriTech(this.props.params.id_sub_cate,0);
     }
     if(this.props.delSuccess!==nextProps.delSuccess && nextProps.delSuccess===true){
       this.setState({
         news: false,
       });
+      if(this.props.listNews && (this.props.listNews.size>0||this.props.listNews.length>0)){
+        this.props.getListNewsAgriTech(this.props.params.id_sub_cate,this.props.curentPage);
+      }else{
+        if(this.props.curentPage>0){
+          this.props.getListNewsAgriTech(this.props.params.id_sub_cate,this.props.curentPage-1);
+        }
+      }
     }
   }
 
@@ -97,23 +104,32 @@ export class ListNewsEvent extends React.Component {
   render() {
     let modalAdd = null;
     let breadCrumb = null;
-    if(this.props.listCate && (this.props.listCate.size >0 || this.props.listCate.length>0)){
+    if(this.props.listSubCate && (this.props.listSubCate.size >0 || this.props.listSubCate.length>0)){
       modalAdd = (
-        <ModalAddNews listCate={this.props.listCate} addNews={this.props.addNews} idcate={this.state.news.idCateNews}
+        <ModalAddAgriTech listSubCate={this.props.listSubCate} addNewsAgriTech={this.props.addNewsAgriTech} idSubcate={this.state.news.idSubCate}
           modalAddNews={this.state.modalAddNews} handleCloseModalAdd={this.handleCloseModalAdd}
           errorCode={this.props.errorCode}/>
       )
-      let nameCate = this.props.listCate.filter((item, index) => {
-        if(item.id===this.props.params.id_cate_news){
+      let nameSubCate = this.props.listSubCate.filter((item, index) => {
+        if(item.id===this.props.params.id_sub_cate){
           return item;
         }     
       })
-      breadCrumb = (
-        <Breadcrumb>
-          <Breadcrumb.Item><a style={{fontSize: 16}} href="/news">Tin tức - Sự kiện</a></Breadcrumb.Item>
-          <Breadcrumb.Item style={{fontSize: 15}}>{nameCate[0].name}</Breadcrumb.Item>
-        </Breadcrumb>
-      )
+      if(this.props.listCate && (this.props.listCate.size >0 || this.props.listCate.length>0)){
+        let nameCate = this.props.listCate.filter((item, index) => {
+          if(item.id===this.props.params.id_cate_news){
+            return item;
+          }     
+        })
+        breadCrumb = (
+          <Breadcrumb>
+            <Breadcrumb.Item><a style={{fontSize: 16}} href="/agritech">Kỹ thuật nông nghiệp</a></Breadcrumb.Item>
+            <Breadcrumb.Item style={{fontSize: 16}} href={`/agritech/${this.props.params.id_cate_news}`}>{nameCate[0].name}</Breadcrumb.Item>
+            <Breadcrumb.Item style={{fontSize: 15}}>{nameSubCate[0].nameSubCate}</Breadcrumb.Item>
+          </Breadcrumb>
+        )
+      }
+      
     }
 
     let page = null;
@@ -149,19 +165,17 @@ export class ListNewsEvent extends React.Component {
             </div>
           </div>
           <div style={styles.content}>
-            <CnewsEventDetail newsEventInfo={this.state.news} addNews={this.props.addNews}/>
+            <CagriTechDetail newsAgritech={this.state.news}/>
           </div>
         </div>
       )
     }
-    
-
     return (
-      <div style={{height: '100%'}}>
+      <div>
         <Helmet
-          title="ListNewsEvent"
+          title="ListAgritech"
           meta={[
-            { name: 'description', content: 'Description of ListNewsEvent' },
+            { name: 'description', content: 'Description of ListAgritech' },
           ]}
         />
         {modalAdd}
@@ -182,7 +196,7 @@ export class ListNewsEvent extends React.Component {
                     <Button onClick={this.addNewsHandle} type="primary" icon="plus-square-o" >Thêm mới</Button>
                   </div>
                 </div>
-                <ClistNewsEvent idCate={this.props.params.id_cate_news} listNews={this.props.listNews}
+                <ClistAgritech idSubCate={this.props.params.id_sub_cate} listNews={this.props.listNews}
                   viewNewsDetail={(id)=>this.viewNewsDetail(id)}/>
                 {page}
               </div>
@@ -199,27 +213,29 @@ export class ListNewsEvent extends React.Component {
   }
 }
 
-ListNewsEvent.propTypes = {
+ListAgritech.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  listNews: selectListNewsEvent(),
-  totalItem: selectTotalItemNewsEvent(),
-  curentPage: selectPageNewsEvent(),
-  delSuccess: selectStateDelNewsEvent(),
-  errorCode: selectErrorCode(),
-  listCate: selectListCateNewsEvent(),
+  listNews: selectListNewsAgriTech(),
+  totalItem: selectTotalItemNewsAgritech(),
+  curentPage: selectPageNewsAgriTech(),
+  listCate: selectListCateAgriTech(),
+  listSubCate: selectgetListSubCateNewsAgriTech(),
+  delSuccess: selectStateDelAT(),
+  errorCode: selectErrorCodeAdAgriTech(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
+    getListNewsAgriTech: (id,page)=> dispatch(getListNewsAgriTech(id,page)),
+    getListCateAgriTech: ()=> dispatch(getListCateAgriTech()),
+    getListSubCateAgriTech: (id)=> dispatch(getListSubCateAgriTech(id)),
+    deleteNews: (id) => dispatch(deleteNews(id)),
+    addNewsAgriTech: (idSubCateLink,title,author,image,tags,idsubcate,content) => dispatch(addNewsAgriTech(idSubCateLink,title,author,image,tags,idsubcate,content)),
     dispatch,
-    getListNews: (id,page)=> dispatch(getListNews(id,page)),
-    deleteNews: (id)=> dispatch(deleteNews(id)),
-    getListCateNews:()=>dispatch(getListCateNews()),
-    addNews: (idCateLink,title,shortDesc,author,image,source,tags,idcate,content)=>dispatch(addNews(idCateLink,title,shortDesc,author,image,source,tags,idcate,content)),
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListNewsEvent);
+export default connect(mapStateToProps, mapDispatchToProps)(ListAgritech);

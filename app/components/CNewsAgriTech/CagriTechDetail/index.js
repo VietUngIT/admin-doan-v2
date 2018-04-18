@@ -7,6 +7,7 @@ import CKEditor from "react-ckeditor-component";
 import Tags from '../../Utils/Tags'
 import {Button,Modal} from 'antd'
 import ModalAddAgriTech from 'components/CNewsAgriTech/ModalAddAgriTech'
+import {message,} from 'antd';
 
 const Button_ = styled.button`
   height: 35px;

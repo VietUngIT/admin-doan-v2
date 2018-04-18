@@ -11,6 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import ItemSubCateAgriTech from '../../CNewsAgriTech/ItemSubCateAgriTech'
 import { Button, Icon } from 'antd'
+import {message,} from 'antd';
 
 class CsubCateAgriTech extends React.Component {
   addCategory=()=>{
