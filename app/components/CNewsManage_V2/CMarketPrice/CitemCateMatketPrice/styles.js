@@ -7,16 +7,29 @@ const styles = {
     },
     title: {
         display: 'inline-block',
-        marginLeft: 20,
-        verticalAlign: 'bottom',
-        fontSize: 20,
+        marginLeft: 10,
+        fontSize: 16,
+        marginRight: 10,
     },
     wrapAction: {
         flex: 1,
-        minWidth: 80,
+        minWidth: 50,
     },
     wrapInfoItem: {
         flex: 5,
+        display: 'flex',
+    },
+    textDeleted: {
+        textDecoration: 'underline',
+        color: '#ff0909',
+        padding: '3px 5px',
+        cursor: 'pointer',
+    },
+    textViewDetail: {
+        textDecoration: 'underline',
+        color: '#108ee9',
+        padding: '3px 5px',
+        cursor: 'pointer',
     },
 
 }

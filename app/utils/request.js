@@ -598,3 +598,54 @@ export function callAPIGetListCateMP(phone,password) {
     .then((data) => ( {data}))
     .catch((error) => ({ error }));
 }
+export function callAPIAddCateMP(phone,password,name,image) {
+  const url = `${API_BASE_URL}admincatemarketprice?ph=${phone}&p=${password}&t=add&image=${!image?'null':image}&name=${name}`;
+  return axios({ url,
+    method: 'GET',
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    }
+  }).then(checkStatus)
+    .then((data) => ( {data}))
+    .catch((error) => ({ error }));
+}
+export function callAPIDellCateMP(phone,password,id) {
+  const url = `${API_BASE_URL}admincatemarketprice?ph=${phone}&p=${password}&t=del&id=${id}`;
+  return axios({ url,
+    method: 'GET',
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    }
+  }).then(checkStatus)
+    .then((data) => ( {data}))
+    .catch((error) => ({ error }));
+}
+export function callAPIGetListNewsMP(phone,password,id,page) {
+  const url = `${API_BASE_URL}marketprice?ph=${phone}&p=${password}&t=getbycate&idcate=${id}&ofset=4&page=${page}`;
+  return axios({ url,
+    method: 'GET',
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    }
+  }).then(checkStatus)
+    .then((data) => ( {data}))
+    .catch((error) => ({ error }));
+}
+export function callAPIDellNewsMP(ph,p,id) {
+  const url = `${API_BASE_URL}adminmarketprice`;
+  var formData = new FormData();
+  formData.append("t","del")
+  formData.append("ph",ph);
+  formData.append("p",p);
+  formData.append("id",id);
+  return axios.post(url,formData)
+    .then(checkStatus)
+    .then((data) => ( {data}))
+    .catch((error) => ({ error }));
+}

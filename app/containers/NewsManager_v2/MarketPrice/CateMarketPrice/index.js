@@ -8,6 +8,8 @@ import styles from './styles';
 import CcateMatketPrice from 'components/CNewsManage_V2/CMarketPrice/CcateMatketPrice'
 import {
   getListCateMP,
+  addCateMP,
+  delCateMP,
  } from './actions';
  import {
   selectListCateMP,
@@ -31,7 +33,7 @@ export class CateMarketPrice extends React.Component {
             <div style={styles.wrapcontentlistnews}>
               <div style={styles.inlineWrapContentlistnews}>
                 <div style={styles.header}>Danh mục tin tức</div>
-                <CcateMatketPrice listCate={this.props.listCate}/>
+                <CcateMatketPrice listCate={this.props.listCate} delCateMP={this.props.delCateMP}/>
                 <div style={styles.wrapButton}>
                   <Button type="primary" icon="plus" size='large' >Thêm mới</Button>
                 </div>
@@ -58,6 +60,8 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     getListCateMP: () => dispatch(getListCateMP()),
+    addCateMP: (name,image) => dispatch(addCateMP(name,image)),
+    delCateMP: (id) => dispatch(delCateMP(id)),
     dispatch,
   };
 }

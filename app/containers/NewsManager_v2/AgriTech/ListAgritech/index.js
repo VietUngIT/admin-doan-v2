@@ -64,7 +64,7 @@ export class ListAgritech extends React.Component {
   }
   componentWillReceiveProps(nextProps){
     if(this.props.params.id_sub_cate!==nextProps.params.id_sub_cate){
-      this.props.getListNewsAgriTech(this.props.params.id_sub_cate,0);
+      this.props.getListNewsAgriTech(nextProps.params.id_sub_cate,0);
     }
     if(this.props.delSuccess!==nextProps.delSuccess && nextProps.delSuccess===true){
       this.setState({

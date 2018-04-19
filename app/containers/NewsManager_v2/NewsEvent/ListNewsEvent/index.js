@@ -64,7 +64,7 @@ export class ListNewsEvent extends React.Component {
   }
   componentWillReceiveProps(nextProps){
     if(this.props.params.id_cate_news!==nextProps.params.id_cate_news){
-      this.props.getListNews(this.props.params.id_cate_news,0);
+      this.props.getListNews(nextProps.params.id_cate_news,0);
     }
     if(this.props.delSuccess!==nextProps.delSuccess && nextProps.delSuccess===true){
       this.setState({

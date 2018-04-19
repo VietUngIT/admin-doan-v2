@@ -7,7 +7,7 @@ class CcateMatketPrice extends React.Component {
     let listcat = null;
     if(this.props.listCate && (this.props.listCate.size>0|| this.props.listCate.length>0)){
       listcat = this.props.listCate.map((item,index) => {
-        return (<CitemCateMatketPrice key={index} index={index} data={item}/>);
+        return (<CitemCateMatketPrice key={index} index={index} data={item} delCateMP={this.props.delCateMP}/>);
       });
     }
     return (
