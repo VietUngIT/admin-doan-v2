@@ -71,6 +71,9 @@ class NavigationBar extends React.Component {
       case '3':
         browserHistory.push('/agritech')
         break;
+      case '4':
+        browserHistory.push('/marketprice')
+        break;
     }
     this.setState({
       current: e.key,

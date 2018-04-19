@@ -240,6 +240,49 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     },{
+      path: '/marketprice',
+      name: 'cateMarketPrice',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/NewsManager_v2/MarketPrice/CateMarketPrice/reducer'),
+          import('containers/NewsManager_v2/MarketPrice/CateMarketPrice/sagas'),
+          import('containers/NewsManager_v2/MarketPrice/CateMarketPrice'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('cateMarketPrice', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+      // childRoutes: [
+      //   {
+      //     path: '/agritech/:id_cate_news',
+      //     name: 'subCateAgriTech',
+      //     getComponent(nextState, cb) {
+      //       const importModules = Promise.all([
+      //         import('containers/NewsManager_v2/AgriTech/SubCateAgriTech/reducer'),
+      //         import('containers/NewsManager_v2/AgriTech/SubCateAgriTech/sagas'),
+      //         import('containers/NewsManager_v2/AgriTech/SubCateAgriTech'),
+      //       ]);
+
+      //       const renderRoute = loadModule(cb);
+
+      //       importModules.then(([reducer, sagas, component]) => {
+      //         injectReducer('subCateAgriTech', reducer.default);
+      //         injectSagas(sagas.default);
+      //         renderRoute(component);
+      //       });
+
+      //       importModules.catch(errorLoading);
+      //     },
+      //   }, 
+      // ]
+    },{
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

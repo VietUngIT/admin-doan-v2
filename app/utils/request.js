@@ -584,3 +584,17 @@ export function callAPIAddNewsAgriTech(ph,p,title,author,image,tags,idsubcate,co
     .then((data) => ( {data}))
     .catch((error) => ({ error }));
 }
+
+export function callAPIGetListCateMP(phone,password) {
+  const url = `${API_BASE_URL}catemarketprice?ph=${phone}&p=${password}&t=getall`;
+  return axios({ url,
+    method: 'GET',
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    }
+  }).then(checkStatus)
+    .then((data) => ( {data}))
+    .catch((error) => ({ error }));
+}
